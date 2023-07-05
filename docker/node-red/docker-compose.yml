@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+  node-red:
+    image: nodered/node-red:latest
+    environment:
+      - TZ=Europe/Stockholm
+    ports:
+      - "1880:1880"
+    networks:
+      - node-red-net
+    volumes:
+      - /home/gustav/node-red/data:/data
+
