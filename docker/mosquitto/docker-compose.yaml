@@ -8,5 +8,5 @@ services:
       - ./data:/mosquitto/data/
       - ./log:/mosquitto/log/
     ports:
-      - 1884:1883
-      - 9004:9001
+      - 1883:1883
+      - 9001:9001
