@@ -174,8 +174,8 @@ def lcd_print_line(line: int, text: str):
 def get_timestamps_from_influxdb() -> tuple[int, int]:
     print("Getting timestamps from InfluxDB...")
     # These queries get the last entries in the database where motion was detected or the reset button was pressed.
-    motion_query = 'from(bucket: "iot") |> range(start: -72h) |> filter(fn: (r) => r["mqtt"] == "esp8266/litterbox") |> filter(fn: (r) => r["host"] == "iot") |> filter(fn: (r) => r["_field"] == "motion_detected") |> filter(fn: (r) => r["_value"] == 1) |> last()'
-    reset_query = 'from(bucket: "iot") |> range(start: -72h) |> filter(fn: (r) => r["mqtt"] == "esp8266/litterbox") |> filter(fn: (r) => r["host"] == "iot") |> filter(fn: (r) => r["_field"] == "reset_pressed") |> filter(fn: (r) => r["_value"] == 1) |> last()'
+    motion_query = 'from(bucket: "iot") |> range(start: -1y) |> filter(fn: (r) => r["mqtt"] == "esp8266/litterbox") |> filter(fn: (r) => r["host"] == "iot") |> filter(fn: (r) => r["_field"] == "motion_detected") |> filter(fn: (r) => r["_value"] == 1) |> last()'
+    reset_query = 'from(bucket: "iot") |> range(start: -1y) |> filter(fn: (r) => r["mqtt"] == "esp8266/litterbox") |> filter(fn: (r) => r["host"] == "iot") |> filter(fn: (r) => r["_field"] == "reset_pressed") |> filter(fn: (r) => r["_value"] == 1) |> last()'
 
     # Headers for the HTTP request
     headers = {
