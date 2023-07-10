@@ -150,8 +150,8 @@ def display_status(state: SensorState):
         # If the litterbox has not been cleaned for a long time, turn on the LED
         # to warn the user that the litterbox needs to be cleaned.
         if (
-            state.motion_last_timestamp - state.reset_last_timestamp
-            > config.LED_WARNING_THRESHOLD
+            state.reset_last_timestamp < state.motion_last_timestamp
+            and motion_delta > config.LED_WARNING_THRESHOLD
         ):
             led.on()
         else:
